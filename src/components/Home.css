@@ -1,0 +1,11 @@
+.Logo {
+    height: 40%;
+    width: 40%;
+    pointer-events: none;
+}
+
+
+div {
+    background-color: #89CAD0;
+    height: 3000px;
+}
