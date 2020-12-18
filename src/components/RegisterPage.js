@@ -3,6 +3,8 @@ import { Component } from 'react';
 import './RegisterPage.css'
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Grid, Row, Col } from 'react-bootstrap';
+import DatePicker from './DatePicker'
+
 
 class Register extends Component {
   render() {
@@ -49,6 +51,7 @@ class Register extends Component {
               
             </Col>
           </Row>
+          <DatePicker />
         </Form>
       </div>
       
