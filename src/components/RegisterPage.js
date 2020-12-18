@@ -11,13 +11,13 @@ class Register extends Component {
         <h1>ข้อมูลส่วนตัว</h1>
         <hr></hr>
         <Form class='form1'>
-          <Form.Row>
+          <Row>
             <Form.Group controlId="formGroupEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="name@gmail.com" />
             </Form.Group>
-          </Form.Row>
-          <Form.Row>
+          </Row>
+          <Row>
             <Col>
             <Form.Control
               as="select"
@@ -41,7 +41,7 @@ class Register extends Component {
             <Col>
             <Form.Control placeholder="Nick name" />
             </Col>
-          </Form.Row>
+          </Row>
         </Form>
       </div>
       
