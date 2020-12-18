@@ -1,27 +1,42 @@
 import { BrowserRouter, Route, Link, Router, Redirect } from 'react-router-dom';
 import { Component } from 'react';
 import './RegisterPage.css'
+import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Register extends Component {
   render() {
     return (
-      <form>
-        {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-        <div class="row mb-4">
-          <div class="col">
-            <div class="form-outline">
-              <input type="text" id="form3Example1" class="form-control" />
-              <label class="form-label" for="form3Example1">First name</label>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-outline">
-              <input type="text" id="form3Example2" class="form-control" />
-              <label class="form-label" for="form3Example2">Last name</label>
-            </div>
-          </div>
-        </div>
-      </form>
+      <Form>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label>Example select</Form.Label>
+          <Form.Control as="select">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Label>Example multiple select</Form.Label>
+          <Form.Control as="select" multiple>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Example textarea</Form.Label>
+          <Form.Control as="textarea" rows={3} />
+        </Form.Group>
+      </Form>
+      
     );
   }
 }
