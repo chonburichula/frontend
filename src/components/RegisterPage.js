@@ -4,7 +4,7 @@ import './RegisterPage.css'
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Grid, Row, Col } from 'react-bootstrap';
 import DatePicker from './DatePicker'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Register extends Component {
   render() {
@@ -14,49 +14,41 @@ class Register extends Component {
         <hr></hr>
         <Form class>
           <Row>
-            <Form.Group controlId="formGroupEmail">
+            <Form.Group as={Col} controlId="formGroupEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" placeholder="name@gmail.com" />
             </Form.Group>
           </Row>
           <br></br>
           <Row>
-            <Col>
-            <Form.Control
-              as="select"
-              className="mr-sm-2"
-              id="inlineFormCustomSelect"
-              custom
-            >
-              <option value="0">เลือกคำนำหน้าชื่อ..</option>
-              <option value="1">เด็กชาย</option>
-              <option value="2">เด็กหญิง</option>
-              <option value="3">นาย</option>
-              <option value="3">นางสาว</option>
-            </Form.Control>
-            </Col>
-            <Col>
+            <Form.Group as={Col} controlId="formGroupTitleName">
+                <Form.Control
+                  as="select"
+                  className="mr-sm-2"
+                  id="inlineFormCustomSelect"
+                  custom
+                >
+                  <option value="0">เลือกคำนำหน้าชื่อ..</option>
+                  <option value="1">เด็กชาย</option>
+                  <option value="2">เด็กหญิง</option>
+                  <option value="3">นาย</option>
+                  <option value="3">นางสาว</option>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGroupFirstName">
               <Form.Control placeholder="First name" />
-            </Col>
-            <Col>
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGroupLastName">
               <Form.Control placeholder="Last name" />
-            </Col>
-            <Col>
-            <Form.Control placeholder="Nick name" />
-            </Col>
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGroupNickName">
+              <Form.Control placeholder="Nick name" />
+            </Form.Group>
           </Row>
           <br></br>
-          <Row>
-            <Col>
-              
-            </Col>
-          </Row>
           <DatePicker />
         </Form>
       </div>
-      
-      
-      
     );
   }
 }
