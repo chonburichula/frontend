@@ -17,6 +17,7 @@ class Register extends Component {
               <Form.Control type="email" placeholder="name@gmail.com" />
             </Form.Group>
           </Row>
+          <br></br>
           <Row>
             <Col>
             <Form.Control
@@ -40,6 +41,12 @@ class Register extends Component {
             </Col>
             <Col>
             <Form.Control placeholder="Nick name" />
+            </Col>
+          </Row>
+          <br></br>
+          <Row>
+            <Col>
+              
             </Col>
           </Row>
         </Form>
