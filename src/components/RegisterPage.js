@@ -10,7 +10,7 @@ class Register extends Component {
       <div class='PersonalInfo'>
         <h1>ข้อมูลส่วนตัว</h1>
         <hr></hr>
-        <Form class='form1'>
+        <Form class>
           <Row>
             <Form.Group controlId="formGroupEmail">
               <Form.Label>Email address</Form.Label>
