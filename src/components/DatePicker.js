@@ -10,7 +10,7 @@ class DatePicker extends React.Component{
                 <div className="row">
                     <div className="col-md-4">
                         <Form.Group controlId="dob">
-                            <Form.Label>เลือกวันเกิด</Form.Label>
+                            <Form.Label>เลือกวันเดือนปีเกิด...</Form.Label>
                             <Form.Control type="date" name="dob" placeholder="Date of Birth" />
                         </Form.Group>
                     </div>

@@ -3,7 +3,9 @@
 .PersonalInfo {
     text-align: left;
     position: absolute;
-    margin-left: 10px;
+    margin-left: 5%;
+    margin-top: 5px;
+    width: 50%;
 }
 
 
