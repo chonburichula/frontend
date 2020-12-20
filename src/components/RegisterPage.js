@@ -15,8 +15,7 @@ class Register extends Component {
         <Form class>
           <Row>
             <Form.Group as={Col} controlId="formGroupEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="name@gmail.com" />
+              <Form.Control type="email" placeholder="กรอกอีเมล์ ex. name@gmail.com" />
             </Form.Group>
           </Row>
           <br></br>
@@ -36,17 +35,19 @@ class Register extends Component {
                 </Form.Control>
             </Form.Group>
             <Form.Group as={Col} controlId="formGroupFirstName">
-              <Form.Control placeholder="First name" />
+              <Form.Control placeholder="ชื่อจริง..." />
             </Form.Group>
             <Form.Group as={Col} controlId="formGroupLastName">
-              <Form.Control placeholder="Last name" />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGroupNickName">
-              <Form.Control placeholder="Nick name" />
+              <Form.Control placeholder="นามสกุล..."/>
             </Form.Group>
           </Row>
           <br></br>
-          <DatePicker />
+          <Row>
+            <Form.Group as={Col} controlId="formGroupNickName">
+              <Form.Control placeholder="ชื่อเล่น..." />
+            </Form.Group>
+            <DatePicker/>
+          </Row>
         </Form>
       </div>
     );
