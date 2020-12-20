@@ -90,6 +90,11 @@ class Register extends Component {
             <Form.Control placeholder="ที่อยู่... ex. 99 หมู่ 9 ต.หมอนนาง อ.พนัสนิคม จ.ชลบุรี" />
           </Form.Group>
           <br></br>
+          <h6>เบอร์โทรศัพท์</h6>
+          <Form.Group controlId="formGroupAddress">
+            <Form.Control placeholder="087-482-XXXX"/>
+          </Form.Group>
+          <br></br>
         </Form>
       </div>
     );
