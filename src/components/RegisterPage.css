@@ -1,11 +1,20 @@
 
-
 .PersonalInfo {
     text-align: left;
-    position: absolute;
     margin-left: 5%;
-    margin-top: 5px;
-    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 65%;
+    background-color: #e3fdfd;
 }
 
-
+.Question {
+    text-align: left;
+    margin-left: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    width: 65%;
+    background-color: #d2f5e3;
+}
