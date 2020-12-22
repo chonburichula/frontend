@@ -1,11 +1,9 @@
-import { BrowserRouter, Route, Link, Router, Redirect } from 'react-router-dom';
 import { Component } from 'react';
 import './RegisterPage.css'
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, Button, FormGroup, FormControl, ControlLabel, Spinner } from "react-bootstrap";
 import { Grid, Row, Col } from 'react-bootstrap';
-import DatePicker from './DatePicker'
+import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios'
 
 class Register extends Component {
   state = {
@@ -37,9 +35,9 @@ class Register extends Component {
     ParentName: null,
     ParentType: null,
     ParentPhoneNumber: null,
-    //GradingAnswer1: null,
-    //GradingAnswer2: null,
-    //GradingAnswer3: null,
+    GradingAnswer1: null,
+    GradingAnswer2: null,
+    GradingAnswer3: null,
     Answer1: null,
     Answer2: null,
     Answer3: null,
@@ -47,67 +45,253 @@ class Register extends Component {
     Answer5: null,
     Answer6: null,
     Answer7: null,
-    Status: null,
     Score: null,
-    loading: false,
-    status: null
+    errors: null
 }
 
 onRequest = () => {
-    console.log(this.state)
-    axios.post('http://localhost:8080/register', {
-      ID: this.state.ID,
-      Email: this.state.Email,
-      Title: this.state.Title,
-      Name: this.state.Name,
-      Surname: this.state.Surname,
-      Nickname: this.state.Nickname,
-      Birthdate: this.state.Birthdate,
-      Age: this.state.Age,
-      BloodType: this.state.BloodType,
-      Religion: this.state.Religion,
-      Address: this.state.Address,
-      PhoneNumber: this.state.PhoneNumber,
-      LineID: this.state.LineID,
-      Facebook: this.state.Facebook,
-      Class: this.state.Class,
-      Major: this.state.Major,
-      School: this.state.School,
-      Disease: this.state.Disease,
-      Medicine: this.state.Medicine,
-      FoodLimitation: this.state.FoodLimitation,
-      ClothSize: this.state.ClothSize,
-      FatherName: this.state.FatherName,
-      FatherPhoneNumber: this.state.FatherPhoneNumber,
-      MotherName: this.state.MotherName,
-      MotherPhoneNumber: this.state.MotherPhoneNumber,
-      ParentName: this.state.ParentName,
-      ParentType: this.state.ParentType,
-      ParentPhoneNumber: this.state.ParentPhoneNumber,
-      //GradingAnswer1: this.state.GradingAnswer1,
-      //GradingAnswer2: this.state.GradingAnswer2,
-      //GradingAnswer3: this.state.GradingAnswer3,
-      Answer1: this.state.Answer1,
-      Answer2: this.state.Answer2,
-      Answer3: this.state.Answer3,
-      Answer4: this.state.Answer4,
-      Answer5: this.state.Answer5,
-      Answer6: this.state.Answer6,
-      Answer7: this.state.Answer7,
-      Status: this.state.Status,
-      Score: this.state.Score,
-    })
-    .then((response) => {
-        this.setState({ loading: false })
-        console.log(response.data.status);
-        this.setState({status:response.data.status})
-    }, (error) => {
-        console.log(error);
-    });
+    const requestOptions = {
+      method: 'POST',
+      mode: 'no-cors', 
+      body: JSON.stringify({
+          ID: this.state.ID,
+          Email: this.state.Email,
+          Title: this.state.Title,
+          Name: this.state.Name,
+          Surname: this.state.Surname,
+          Nickname: this.state.Nickname,
+          Birthdate: this.state.Birthdate,
+          Age: this.state.Age,
+          BloodType: this.state.BloodType,
+          Religion: this.state.Religion,
+          Address: this.state.Address,
+          PhoneNumber: this.state.PhoneNumber,
+          LineID: this.state.LineID,
+          Facebook: this.state.Facebook,
+          Class: this.state.Class,
+          Major: this.state.Major,
+          School: this.state.School,
+          Disease: this.state.Disease,
+          Medicine: this.state.Medicine,
+          FoodLimitation: this.state.FoodLimitation,
+          ClothSize: this.state.ClothSize,
+          FatherName: this.state.FatherName,
+          FatherPhoneNumber: this.state.FatherPhoneNumber,
+          MotherName: this.state.MotherName,
+          MotherPhoneNumber: this.state.MotherPhoneNumber,
+          ParentName: this.state.ParentName,
+          ParentType: this.state.ParentType,
+          ParentPhoneNumber: this.state.ParentPhoneNumber,
+          GradingAnswer1: this.state.GradingAnswer1,
+          GradingAnswer2: this.state.GradingAnswer2,
+          GradingAnswer3: this.state.GradingAnswer3,
+          Answer1: this.state.Answer1,
+          Answer2: this.state.Answer2,
+          Answer3: this.state.Answer3,
+          Answer4: this.state.Answer4,
+          Answer5: this.state.Answer5,
+          Answer6: this.state.Answer6,
+          Answer7: this.state.Answer7,
+          Status: this.state.Status,
+          Score: this.state.Score
+        })
+    };
+    fetch('http://localhost:8080/register', requestOptions);
   } 
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if(this.handleValidation()){
+      this.onRequest();
+      alert("สมัครสมาชิกสำเร็จ");
+    } else {
+      let text="กรุณากรอกข้อมูลให้ครบถ้วน \n\nรายการที่ไม่สมบูรณ์: \n";
+      for (var key in this.state.errors) {
+        text+=key+"\n";
+      }
+      text+="\nสมัครไม่สำเร็จ"
+      alert(text);
+    }
+  }
   
+  handleValidation(){
+    let errors = {};
+    let formIsValid = true;
+
+    //Name
+    if(this.state.Name === null){
+       formIsValid = false;
+       errors["ชื่อจริง"] = "กรุณากรอกชื่อจริง";
+    }
+    //Title
+    if(this.state.Title === '0'){
+      formIsValid = false;
+      errors["คำนำหน้าชื่อ"] = "กรุณาเลือกคำนำหน้าชื่อ";
+    }
+    //Surname
+    if(this.state.Surname === null){
+      formIsValid = false;
+      errors["นามสกุล"] = "กรุณากรอกนามสกุล";
+    }
+    //Nickname
+    if(this.state.Nickname === null){
+      formIsValid = false;
+      errors["ชื่อเล่น"] = "กรุณากรอกชื่อเล่น";
+    }
+    //Nickname
+    if(this.state.Birthdate === null){
+      formIsValid = false;
+      errors["วันเกิด"] = "กรุณาเลือกวันเกิด";
+    }
+    //BloodType
+    if(this.state.BloodType === '0'){
+      formIsValid = false;
+      errors["หมู่โลหิต"] = "กรุณากรเลือกหมู่โลหิต";   
+    }
+
+    //Religion
+    if(this.state.Religion === '0'){
+      formIsValid = false;
+      errors["ศาสนา"] = "กรุณาเลือกศาสนา";
+    }
+
+    //Address }
+    if(this.state.Address === null){
+      formIsValid = false;
+      errors["ที่อยู่"] = "กรุณากรอกที่อยู่";
+    }
+    
+    //PhoneNumber
+    if(this.state.PhoneNumber === null){
+      formIsValid = false;
+      errors["เบอร์โทรศัพท์"] = "กรุณากรอกเบอร์โทรศัพท์";
+    }
+
+    //LineID
+    if(this.state.LineID === null){
+      formIsValid = false;
+      errors["ไลน์ไอดี"] = "กรุณากรอกไลน์ไอดี";
+    }
+
+    //Facebook
+    if(this.state.Facebook === null){
+      formIsValid = false;
+      errors["เฟซบุ๊ก"] = "กรุณากรอกเฟซบุ๊ก";
+    }
+
+    //Class
+    if(this.state.Class === '0'){
+      formIsValid = false;
+      errors["ชั้นปี"] = "กรุณาเลือกชั้นปี";
+    }
+
+    //Major
+    if(this.state.Major === '0'){
+      formIsValid = false;
+      errors["แผนการเรียน"] = "กรุณาเลือกแผนการเรียน";
+    }
+
+    //School
+    if(this.state.School === null){
+      formIsValid = false;
+      errors["โรงเรียน"] = "กรุณากรอกโรงเรียน";
+    }
+
+    //ClothSize
+    if(this.state.ClothSize === '0'){
+      formIsValid = false;
+      errors["ไซส์เสื้อ"] = "กรุณาเลือกไซส์เสื้อ";
+    }
+
+    //ParentName
+    if(this.state.ParentName === null){
+      formIsValid = false;
+      errors["ชื่อผู้ปกครอง"] = "กรุณากรอกชื่อผู้ปกครอง";
+    }
+
+    //ParentType
+    if(this.state.ParentType === null){
+      formIsValid = false;
+      errors["ประเภทของผู้ปกครอง"] = "";
+    }
+    //ParentPhoneNumber
+    if(this.state.ParentPhoneNumber === null){
+      formIsValid = false;
+      errors["เบอร์โทรศัพท์ผู้ปกครอง"] = "";
+    }
+    //ParentPhoneNumber
+    if(this.state.ParentPhoneNumber === null){
+      formIsValid = false;
+      errors["เบอร์โทรศัพท์ผู้ปกครอง"] = "";
+    }
+
+    //GradingAnswer1
+    if(this.state.GradingAnswer1=== null){
+      formIsValid = false;
+      errors["คำถามข้อที่ึ 1"] = "";
+    }
+
+    //GradingAnswer2
+    if(this.state.GradingAnswer2=== null){
+      formIsValid = false;
+      errors["คำถามข้อที่ึ 2"] = "";
+    }
+
+    //GradingAnswer3
+    if(this.state.GradingAnswer3=== null){
+      formIsValid = false;
+      errors["คำถามข้อที่ึ 3"] = "";
+    }
+    
+    // //Answer1
+    // if(this.state.Answer1=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 1"] = "";
+    // }
+
+    // //Answer2
+    // if(this.state.Answer2=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 2"] = "";
+    // }
+
+    // //Answer3
+    // if(this.state.Answer3=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 3"] = "";
+    // }
+    
+    // //Answer4
+    // if(this.state.Answer4=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 4"] = "";
+    // }
+    
+    // //Answer5
+    // if(this.state.Answer5=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 5"] = "";
+    // }
+    
+    // //Answer6
+    // if(this.state.Answer6=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 6"] = "";
+    // }
+    
+    // //Answer7
+    // if(this.state.Answer7=== null){
+    //   formIsValid = false;
+    //   errors["คำถามข้อที่ึ 7"] = "";
+    // }
+
+    this.state.errors = errors;
+    return formIsValid;
+  }
+
   render() {
     return (
+      <>
       <div class='Overall'>
         <div class='PersonalInfo'>
           <h1 class='Header'>ข้อมูลส่วนตัว</h1>
@@ -115,7 +299,7 @@ onRequest = () => {
           <Form class>
             <h6>Email Address</h6>
             <Form.Group  controlId="formGroup">
-              <Form.Control type="email" placeholder="กรอกอีเมล์ ex. name@gmail.com" onChagne/>
+              <Form.Control type="email" placeholder="กรอกอีเมล์ ex. name@gmail.com" onChange={(e) => this.setState({ Email: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>คำนำหน้าชื่อ</h6>
@@ -125,31 +309,35 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ Title: e.target.value })}
               >
                 <option value="0">เลือกคำนำหน้าชื่อ..</option>
-                <option value="1">เด็กชาย</option>
-                <option value="2">เด็กหญิง</option>
-                <option value="3">นาย</option>
-                <option value="4">นางสาว</option>
+                <option value="เด็กชาย">เด็กชาย</option>
+                <option value="เด็กหญิง">เด็กหญิง</option>
+                <option value="นาย">นาย</option>
+                <option value="นางสาว">นางสาว</option>
               </Form.Control>
             </Form.Group>
             <br></br>
             <h6>ชื่อ</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ชื่อจริง..." />
+              <Form.Control placeholder="ชื่อจริง..." onChange={(e) => this.setState({ Name: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>นามสกุล</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="นามสกุล..."/>
+              <Form.Control placeholder="นามสกุล..." onChange={(e) => this.setState({ Surname: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>ชื่อเล่น</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ชื่อเล่น..." />
+              <Form.Control placeholder="ชื่อเล่น..." onChange={(e) => this.setState({ Nickname: e.target.value })}/>
             </Form.Group>
             <br></br>
-            <DatePicker/>
+            <Form.Group controlId="dob">
+              <Form.Label>เลือกวันเดือนปีเกิด...</Form.Label>
+              <Form.Control type="date" name="dob" placeholder="Date of Birth" onChange={(e) => this.setState({ Birthdate: e.target.value })}/>
+            </Form.Group>
             <br></br>
             <h6>หมู่โลหิต</h6>
             <Form.Group controlId="formGroupBloodType">
@@ -158,12 +346,13 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ BloodType: e.target.value })}
               >
                 <option value="0">เลือกหมู่โลหิต...</option>
-                <option value="1">A</option>
-                <option value="2">B</option>
-                <option value="3">O</option>
-                <option value="4">AB</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="O">O</option>
+                <option value="AB">AB</option>
               </Form.Control>
             </Form.Group>
             <br></br>
@@ -174,35 +363,36 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ Religion: e.target.value })}
               >
                 <option value="0">เลือกศาสนา...</option>
-                <option value="1">พุทธ</option>
-                <option value="2">คริสต์</option>
-                <option value="3">อิสลาม</option>
-                <option value="4">พราหมณ์-ฮินดู</option>
-                <option value="5">ซิกข์</option>
-                <option value="6">อื่นๆ...</option>
+                <option value="พุทธ">พุทธ</option>
+                <option value="คริสต์">คริสต์</option>
+                <option value="อิสลาม">อิสลาม</option>
+                <option value="พราหมณ์-ฮินดู">พราหมณ์-ฮินดู</option>
+                <option value="ซิกข์">ซิกข์</option>
+                <option value="อื่นๆ...">อื่นๆ...</option>
               </Form.Control>
             </Form.Group>
             <br></br>
             <h6>ที่อยู่</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+              <textarea class="form-control" id="form4Example3" rows="4" onChange={(e) => this.setState({ Address: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>เบอร์โทรศัพท์</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ex. 087-482-XXXX"/>
+              <Form.Control placeholder="ex. 087-482-XXXX" onChange={(e) => this.setState({ PhoneNumber: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>LineID</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ไลน์ไอดี..." />
+              <Form.Control placeholder="ไลน์ไอดี..." onChange={(e) => this.setState({ LineID: e.target.value })} />
             </Form.Group>
             <br></br>
-            <h6>LineID</h6>
+            <h6>Facebook</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="เฟซบุ๊ก..." />
+              <Form.Control placeholder="เฟซบุ๊ก..." onChange={(e) => this.setState({ Facebook: e.target.value })} />
             </Form.Group>
             <br></br>
             <h6>ระดับชั้น</h6>
@@ -212,11 +402,12 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ Class: e.target.value })}
               >
                 <option value="0">เลือกระดับชั้น...</option>
-                <option value="1">มัธยมศึกษาปีที่ 4</option>
-                <option value="2">มัธยมศึกษาปีที่ 5</option>
-                <option value="3">มัธยมศึกษาปีที่ 6</option>
+                <option value="4">มัธยมศึกษาปีที่ 4</option>
+                <option value="5">มัธยมศึกษาปีที่ 5</option>
+                <option value="6">มัธยมศึกษาปีที่ 6</option>
               </Form.Control>
             </Form.Group>
             <br></br>
@@ -227,32 +418,33 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ Major: e.target.value })}
               >
                 <option value="0">เลือกแผนการเรียน...</option>
-                <option value="1">วิทย์ - คณิต</option>
-                <option value="2">ศิลป์ - คำนวณ</option>
-                <option value="3">ศิลป์ - ภาษา</option>
+                <option value="วิทย์ - คณิต">วิทย์ - คณิต</option>
+                <option value="ศิลป์ - คำนวณ">ศิลป์ - คำนวณ</option>
+                <option value="ศิลป์ - ภาษา">ศิลป์ - ภาษา</option>
               </Form.Control>
             </Form.Group>
             <br></br>
             <h6>โรงเรียน</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ชื่อเต็มของโรงเรียน Ex.ชลราษฎรอำรุง " />
+              <Form.Control placeholder="ชื่อเต็มของโรงเรียน Ex.ชลราษฎรอำรุง " onChange={(e) => this.setState({ School: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>โรคประจำตัว</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="โรคประจำตัว... " />
+              <Form.Control placeholder="โรคประจำตัว... " onChange={(e) => this.setState({ Disease: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>ยาประจำตัว</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ยาประจำตัว... " />
+              <Form.Control placeholder="ยาประจำตัว... " onChange={(e) => this.setState({ Medicine: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>ข้อจำกัดด้านอาหาร</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="เช่น ไม่ทานเนื้อหมู ไม่ทานเผ็ด... " />
+              <Form.Control placeholder="เช่น ไม่ทานเนื้อหมู ไม่ทานเผ็ด... " onChange={(e) => this.setState({ FoodLimitation: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>ขนาดเสื้อ</h6>
@@ -262,31 +454,33 @@ onRequest = () => {
                 className="mr-sm-2"
                 id="inlineFormCustomSelect"
                 custom
+                onChange={(e) => this.setState({ ClothSize: e.target.value })}
               >
                 <option value="0">เลือกขนาดเสื้อ...</option>
-                <option value="1">S (33")</option>
-                <option value="2">M (36")</option>
-                <option value="3">L (40")</option>
-                <option value="4">XL (44")</option>
-                <option value="5">XXL (48")</option>
+                <option value='S'>S (33")</option>
+                <option value='M'>M (36")</option>
+                <option value='L'>L (40")</option>
+                <option value='XL'>XL (44")</option>
+                <option value='XXL'>XXL (48")</option>
               </Form.Control>
             </Form.Group>
             <br></br>
             <h6>ชื่อ-สกุล ผู้ปกครอง</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="เช่น นายประหยัด จันทร์อังคารพุธ... " />
+              <Form.Control placeholder="เช่น นายประหยัด จันทร์อังคารพุธ... " onChange={(e) => this.setState({ ParentName: e.target.value })}/>
             </Form.Group> 
             <br></br>
             <h6>ผู้ปกครองเกี่ยวข้องเป็น</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="เช่น พ่อ หรือ ป้า หรือ ย่า หรือ ยาย... " />
+              <Form.Control placeholder="เช่น พ่อ หรือ ป้า หรือ ย่า หรือ ยาย... " onChange={(e) => this.setState({ ParentType: e.target.value })}/>
             </Form.Group> 
             <br></br>
             <h6>เบอร์โทรศัพท์</h6>
             <Form.Group controlId="formGroup">
-              <Form.Control placeholder="ex. 087-482-XXXX"/>
+              <Form.Control placeholder="ex. 087-482-XXXX" onChange={(e) => this.setState({ ParentPhoneNumber: e.target.value })}/>
             </Form.Group>
             <br></br>
+          
           </Form>
         </div>
         <div class='Question'>
@@ -307,17 +501,17 @@ onRequest = () => {
           <br></br>
             <h6>คำถามข้อที่ 1</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" rows="4"></textarea>
+              <textarea class="form-control" rows="4" onChange={(e) => this.setState({ GradingAnswer1: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>คำถามข้อที่ 2</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control"  rows="4"></textarea>
+              <textarea class="form-control"  rows="4" onChange={(e) => this.setState({ GradingAnswer2: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>คำถามข้อที่ 3</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control"  rows="4"></textarea>
+              <textarea class="form-control"  rows="4" onChange={(e) => this.setState({ GradingAnswer3: e.target.value })}></textarea>
             </div>
             <br></br>
           </Form>
@@ -330,7 +524,7 @@ onRequest = () => {
           <br></br>
           <h6>น้องรู้จักโครงการนี้ได้อย่างไร</h6>
           <Form.Group id="formGroup">
-            <Form.Control placeholder="..." />
+            <Form.Control placeholder="..." onChange={(e) => this.setState({ Answer1: e.target.value })}/>
           </Form.Group> 
           <br></br>
           <h6>น้องๆเคยเข้าร่วมโครงค่ายจุฬาฯ - ชลบุรีมาก่อนหรือไม่</h6>
@@ -340,25 +534,45 @@ onRequest = () => {
               className="mr-sm-2"
               id="inlineFormCustomSelect"
               custom
+              onChange={(e) => this.setState({ Answer2: e.target.value })}
             >
               <option value="0">เลือก...</option>
-              <option value="1">เคย</option>
-              <option value="2">ไม่เคย</option>
+              <option value="เคย">เคย</option>
+              <option value="ไม่เคย">ไม่เคย</option>
             </Form.Control>
           </Form.Group>
           <br></br>
           <h6>คณะที่น้องอยากเข้ามากที่สุดพร้อมเหตุผล</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT3" rows="4"></textarea>
+              <textarea class="form-control" id="formT3" rows="4" onChange={(e) => this.setState({ Answer3: e.target.value })}></textarea>
             </div>
           <br></br>
           <h6>มุมมองของน้องที่มีต่อจุฬาลงกรณ์มหาวิทยาลัย</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT4" rows="4"></textarea>
+              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer4: e.target.value })}></textarea>
+            </div>
+          <br></br>
+          <h6>ถ้าน้องขอพรได้ 1 ข้อ น้องจะขออะไร</h6>
+            <div class="form-outline mb-4" id="formGroup">
+              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer5: e.target.value })}></textarea>
+            </div>
+          <br></br>
+          <h6>ความคาดหวังต่อค่ายจุฬาฯ - ชลบุรี ครั้งที่ 42 พร้อมเหตุผล</h6>
+            <div class="form-outline mb-4" id="formGroup">
+              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer6: e.target.value })}></textarea>
+            </div>
+          <br></br>
+          <h6>สิ่งที่อยากจะบอกกับพี่ ๆ :3</h6>
+            <div class="form-outline mb-4" id="formGroup">
+              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer7: e.target.value })}></textarea>
             </div>
           <br></br>
         </div>
       </div>
+        <Button variant="primary" onClick={this.handleSubmit.bind(this)}>
+          SUBMIT
+        </Button>
+      </>
     );
   }
 }
