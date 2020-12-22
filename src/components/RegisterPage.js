@@ -334,7 +334,7 @@ onRequest = () => {
               <Form.Control placeholder="ชื่อเล่น..." onChange={(e) => this.setState({ Nickname: e.target.value })}/>
             </Form.Group>
             <br></br>
-            <Form.Group controlId="dob">
+            <Form.Group controlId="formGroup">
               <Form.Label>เลือกวันเดือนปีเกิด...</Form.Label>
               <Form.Control type="date" name="dob" placeholder="Date of Birth" onChange={(e) => this.setState({ Birthdate: e.target.value })}/>
             </Form.Group>
