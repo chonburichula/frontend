@@ -2,19 +2,41 @@
 .PersonalInfo {
     text-align: left;
     margin-left: 5%;
-    padding-left: 10px;
+    padding-left: 5%;
     padding-right: 10px;
     padding-top: 10px;
-    width: 65%;
+    margin-right: 5%;
     background-color: #e3fdfd;
 }
 
 .Question {
     text-align: left;
     margin-left: 5%;
-    padding-left: 10px;
+    padding-left: 5%;
     padding-right: 10px;
-    margin-top: 20px;
-    width: 65%;
+    padding-top: 10px;
+    margin-right: 5%;
+    margin-top: 10px;
     background-color: #d2f5e3;
 }
+
+.Talking {
+    text-align: left;
+    margin-left: 5%;
+    padding-left: 5%;
+    padding-right: 10px;
+    padding-top: 10px;
+    margin-right: 5%;
+    margin-top: 10px;
+    background-color: #ffe0d8;
+}
+
+#formGroup {
+    width: 70%;
+}
+
+.Header{
+    position: relative;
+    right: 5%;
+}
+
