@@ -206,10 +206,11 @@ class Register extends Component {
           <hr></hr>
           <Form>
           <br></br>
-            <h6>เบอร์โทรศัพท์</h6>
-            <Form.Group controlId="formGroupParentTel">
-              <Form.Control placeholder="ex. 087-482-XXXX"/>
-            </Form.Group>
+            <h6>คำถามข้อที่ 1</h6>
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+              <label class="form-label" for="form4Example3">Message</label>
+            </div>
             <br></br>
           </Form>
         </div>
