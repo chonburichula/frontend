@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './DetailPage.css';
+import './Home.css';
 import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
 class Detail extends Component {
     render(){

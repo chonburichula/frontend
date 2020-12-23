@@ -10,3 +10,9 @@
     width: 40%;
 }
 
+.Annoucement{
+    text-align: left;
+    background-color: #e3fdfd;
+    margin : 0 10px 5px 10px;
+    padding: 5px 5px;
+}
