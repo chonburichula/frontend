@@ -100,7 +100,7 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    fetch('http://3.89.164.72:8080/register', requestOptions);
+    fetch('http://13.229.89.142/register', requestOptions);
   } 
 
   handleSubmit = (e) => {
@@ -574,7 +574,7 @@ onRequest = () => {
         </div>
       </div>
         <Button variant="primary" onClick={this.handleSubmit.bind(this)}>
-          SUBMIT
+          ส่งใบสมัคร
         </Button>
       </>
     );
