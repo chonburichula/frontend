@@ -49,6 +49,10 @@ class Register extends Component {
     errors: null
 }
 
+componentDidMount() {
+  window.scrollTo(0, 0);
+}
+
 onRequest = () => {
     const requestOptions = {
       method: 'POST',
@@ -96,7 +100,7 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    fetch('http://localhost:8080/register', requestOptions);
+    fetch('http://3.89.164.72:8080/register', requestOptions);
   } 
 
   handleSubmit = (e) => {

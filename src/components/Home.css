@@ -1,17 +1,12 @@
 .Logo {
-    height: 30%;
-    width: 30%;
+    height: 45%;
+    width: 45%;
     pointer-events: none;
 }
 
 
-.Annoucement{
-    text-align: left;
-    background-color: #e3fdfd;
-    margin : 5px 20% 5px 20%;
-    padding: 5px 5px;
-}
 
 .btn {
     width: 30%;
 }
+
