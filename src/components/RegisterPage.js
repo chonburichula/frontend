@@ -100,7 +100,7 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    fetch('http://13.229.89.142/register', requestOptions);
+    fetch('http://34.126.69.10:8080/register', requestOptions);
   } 
 
   handleSubmit = (e) => {
