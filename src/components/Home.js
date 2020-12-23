@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
 import logo from '../res/logo.jpg';
 import './Home.css';
 import 'mdbreact/dist/css/mdb.css';
+import './DetailPage'
 
 class Home extends Component {
   render() {
