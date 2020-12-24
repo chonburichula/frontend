@@ -55,7 +55,7 @@ componentDidMount() {
 onRequest = () => {
     const requestOptions = {
       method: 'POST',
-      mode: 'no-cors', 
+      // mode: 'no-cors', 
       body: JSON.stringify({
           ID: this.state.ID,
           Email: this.state.Email,
@@ -99,14 +99,18 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    fetch('http://34.126.69.10:8080/register', requestOptions)
+    // fetch('http://34.126.69.10:8080/register', requestOptions)
+    fetch('http://localhost:8080/register', requestOptions)
     .then((response,data) => {
+      console.log(response);
       if (response.ok) {
         console.log('Success:', data);
         this.props.history.push('/success');
       } else {
         alert("server บึ้มมม")
       }
+      // console.log('Success:', data);
+      // this.props.history.push('/success');
     })
     .catch((error) => {
       console.error('Error:', error);
