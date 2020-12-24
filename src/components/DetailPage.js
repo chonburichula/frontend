@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import './Home.css';
 import './../index.css'
-import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './DetailPage.css'
 class Detail extends Component {
     render(){
         return(

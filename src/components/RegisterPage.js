@@ -1,9 +1,7 @@
 import { Component } from 'react';
 import './RegisterPage.css'
 import './../index.css'
-import { Form, Button, FormGroup, FormControl, ControlLabel, Spinner } from "react-bootstrap";
-import { Grid, Row, Col } from 'react-bootstrap';
-import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
+import { Form, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Register extends Component {
@@ -102,13 +100,17 @@ onRequest = () => {
         })
     };
     fetch('http://34.126.69.10:8080/register', requestOptions)
-    .then(data => {
-      console.log('Success:', data);
-      this.props.history.push('/success')
+    .then((response,data) => {
+      if (response.ok) {
+        console.log('Success:', data);
+        this.props.history.push('/success');
+      } else {
+        alert("server บึ้มมม")
+      }
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert("server ล่มจ้าาาา");
+      alert("ขออภัยในความไม่สะดวกค่ะ ขณะนี้เซิฟเวอร์ไม่พร้อมให้บริการ กรุณาลองใหม่อีกครั้งในภายหลัง หรือติดต่อเพจเฟซบุ๊ก ค่ายจุฬาฯ-ชลบุรี");
     });
   } 
 

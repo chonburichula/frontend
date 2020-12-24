@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../res/logo.jpg';
 import './Home.css';
 import 'mdbreact/dist/css/mdb.css';
 import './DetailPage'
-import { MDBIcon, MDBContainer } from 'mdbreact';
+import { SocialIcon } from 'react-social-icons';
 
 class Home extends Component {
   render() {
@@ -20,14 +20,16 @@ class Home extends Component {
           </button>
         </Link>
       </div>
-      <MDBContainer>
-          <a href="#!" className="fb-ic mr-3">
-            <MDBIcon fab icon="facebook-f" />
-          </a>
-          <a href="#!" className="tw-ic mr-3">
-            <MDBIcon fab icon="twitter" />
-          </a>
-        </MDBContainer>
+      <div class='Icons'>
+        <div id="icon">
+          <SocialIcon url="https://www.facebook.com/chulachon40" /> 
+          <span>  Facebook</span>
+        </div>
+        <div id="icon">
+          <SocialIcon url="https://www.instagram.com/chulachon.official/" />
+          <span>  Instagram</span>
+        </div>
+      </div>
       </>
     );
   }

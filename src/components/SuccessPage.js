@@ -1,17 +1,20 @@
 import { Component } from 'react';
 import './SuccessPage.css';
-import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import thank from '../res/thank.png';
 
 class Success extends Component {
     render() {
       return (
         <>
         <div className="SuccessInfo">
-          <p>Success!!!!</p>
+          <img className="Thank" src={thank} />
           <Link to="/">
-            <button type="button" class="btn btn-primary">
-              <h3>กลับสู่หน้าหลัก</h3>
-            </button>
+          <br />
+          <br />
+          <button type="button" class="btn btn-primary">
+            <h3>กลับสู่หน้าหลัก</h3>
+          </button>
           </Link>
         </div>
         </>

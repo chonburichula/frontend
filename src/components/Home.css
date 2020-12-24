@@ -1,20 +1,22 @@
 .Logo {
     padding-top: 3%;
     height: auto;
-    width: 45%;
+    width: 40%;
     pointer-events: none;
 }
 .home{
     height: 100%;
 }
-
 .btn {
     width: auto;
 }
 
-.Annoucement{
-    text-align: left;
-    background-color: #e3fdfd;
-    margin : 0 10px 5px 10px;
-    padding: 5px 5px;
+#icon {
+    display: inline-block;
+    padding: 5px 5px 0 0;
+    font-size: 90%;
+}
+
+.Icons {
+    overflow: hidden;
 }
