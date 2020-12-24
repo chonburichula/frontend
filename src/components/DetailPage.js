@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import './Home.css';
+import './../index.css'
 import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
 class Detail extends Component {
     render(){
         return(
             <>
-            <div>
+            <div class="Overall">
                 <div className="Annoucement">
                     <h1>กรุณาอ่านรายละเอียด</h1>
                     <hr></hr>

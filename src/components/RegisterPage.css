@@ -4,7 +4,7 @@
     margin-left: 5%;
     padding-left: 5%;
     padding-right: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     margin-right: 5%;
     background-color: #e3fdfd;
 }
@@ -14,9 +14,9 @@
     margin-left: 5%;
     padding-left: 5%;
     padding-right: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     margin-right: 5%;
-    margin-top: 10px;
+    margin-top: 5%;
     background-color: #d2f5e3;
 }
 
@@ -25,9 +25,9 @@
     margin-left: 5%;
     padding-left: 5%;
     padding-right: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     margin-right: 5%;
-    margin-top: 10px;
+    margin-top: 5%;
     background-color: #ffe0d8;
 }
 
@@ -36,7 +36,12 @@
 }
 
 .Header{
-    position: relative;
-    right: 5%;
+    /* position: relative;
+    right: 5%; */
+    text-align: left;
 }
 
+.Overall{
+    
+    padding-top: 5%;
+}

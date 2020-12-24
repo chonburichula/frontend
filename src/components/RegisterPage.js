@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './RegisterPage.css'
+import './../index.css'
 import { Form, Button, FormGroup, FormControl, ControlLabel, Spinner } from "react-bootstrap";
 import { Grid, Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Link, Router, Redirect } from 'react-router-dom';
@@ -100,21 +101,27 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    fetch('http://34.126.69.10:8080/register', requestOptions);
+    fetch('http://34.126.69.10:8080/register', requestOptions)
+    .then(data => {
+      console.log('Success:', data);
+      this.props.history.push('/success')
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert("server ล่มจ้าาาา");
+    });
   } 
 
   handleSubmit = (e) => {
     e.preventDefault();
     if(this.handleValidation()){
       this.onRequest();
-      alert("สมัครสมาชิกสำเร็จ");
     } else {
       let text="กรุณากรอกข้อมูลให้ครบถ้วน \n\nรายการที่ไม่สมบูรณ์: \n";
       for (var key in this.state.errors) {
         text+=key+"\n";
       }
       text+="\nสมัครไม่สำเร็จ"
-      alert(text);
     }
   }
   
@@ -339,12 +346,12 @@ onRequest = () => {
             </Form.Group>
             <br></br>
             <Form.Group controlId="formGroup">
-              <Form.Label>เลือกวันเดือนปีเกิด...</Form.Label>
+              <Form.Label ><h6>เลือกวันเดือนปีเกิด...</h6></Form.Label>
               <Form.Control type="date" name="dob" placeholder="Date of Birth" onChange={(e) => this.setState({ Birthdate: e.target.value })}/>
             </Form.Group>
             <br></br>
             <h6>หมู่โลหิต</h6>
-            <Form.Group controlId="formGroupBloodType">
+            <Form.Group controlId="formGroup">
               <Form.Control
                 as="select"
                 className="mr-sm-2"
@@ -352,11 +359,11 @@ onRequest = () => {
                 custom
                 onChange={(e) => this.setState({ BloodType: e.target.value })}
               >
-                <option value="0">เลือกหมู่โลหิต...</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="O">O</option>
-                <option value="AB">AB</option>
+                <option value="0" id='formGroup'>เลือกหมู่โลหิต...</option>
+                <option value="A" id='formGroup'>A</option>
+                <option value="B" id='formGroup'>B</option>
+                <option value="O" id='formGroup'>O</option>
+                <option value="AB" id='formGroup'>AB</option>
               </Form.Control>
             </Form.Group>
             <br></br>
@@ -381,7 +388,7 @@ onRequest = () => {
             <br></br>
             <h6>ที่อยู่</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="form4Example3" rows="4" onChange={(e) => this.setState({ Address: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Address: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>เบอร์โทรศัพท์</h6>
@@ -505,17 +512,17 @@ onRequest = () => {
           <br></br>
             <h6>คำถามข้อที่ 1</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" rows="4" onChange={(e) => this.setState({ GradingAnswer1: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer1: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>คำถามข้อที่ 2</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control"  rows="4" onChange={(e) => this.setState({ GradingAnswer2: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer2: e.target.value })}></textarea>
             </div>
             <br></br>
             <h6>คำถามข้อที่ 3</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control"  rows="4" onChange={(e) => this.setState({ GradingAnswer3: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer3: e.target.value })}></textarea>
             </div>
             <br></br>
           </Form>
@@ -548,34 +555,34 @@ onRequest = () => {
           <br></br>
           <h6>คณะที่น้องอยากเข้ามากที่สุดพร้อมเหตุผล</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT3" rows="4" onChange={(e) => this.setState({ Answer3: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Answer3: e.target.value })}></textarea>
             </div>
           <br></br>
           <h6>มุมมองของน้องที่มีต่อจุฬาลงกรณ์มหาวิทยาลัย</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer4: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Answer4: e.target.value })}></textarea>
             </div>
           <br></br>
           <h6>ถ้าน้องขอพรได้ 1 ข้อ น้องจะขออะไร</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer5: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Answer5: e.target.value })}></textarea>
             </div>
           <br></br>
           <h6>ความคาดหวังต่อค่ายจุฬาฯ - ชลบุรี ครั้งที่ 42 พร้อมเหตุผล</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer6: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Answer6: e.target.value })}></textarea>
             </div>
           <br></br>
           <h6>สิ่งที่อยากจะบอกกับพี่ ๆ :3</h6>
             <div class="form-outline mb-4" id="formGroup">
-              <textarea class="form-control" id="formT4" rows="4" onChange={(e) => this.setState({ Answer7: e.target.value })}></textarea>
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ Answer7: e.target.value })}></textarea>
             </div>
           <br></br>
         </div>
       </div>
-        <Button variant="primary" onClick={this.handleSubmit.bind(this)}>
-          ส่งใบสมัคร
-        </Button>
+      <Button variant="primary" onClick={this.handleSubmit.bind(this)}>
+        <h1>ส่งใบสมัคร</h1>
+      </Button>
       </>
     );
   }
