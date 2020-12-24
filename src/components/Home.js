@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../res/logo.jpg';
 import './Home.css';
-import 'mdbreact/dist/css/mdb.css';
+// import 'mdbreact/dist/css/mdb.css';
 import './DetailPage'
 import { SocialIcon } from 'react-social-icons';
 
