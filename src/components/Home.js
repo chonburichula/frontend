@@ -4,6 +4,7 @@ import logo from '../res/logo.jpg';
 import './Home.css';
 import 'mdbreact/dist/css/mdb.css';
 import './DetailPage'
+import { MDBIcon, MDBContainer } from 'mdbreact';
 
 class Home extends Component {
   render() {
@@ -13,8 +14,20 @@ class Home extends Component {
         <header className="Home-header">
           <img className="Logo" src={logo} />
         </header>
-        <Link to="/detail"><button type="button" class="btn btn-primary"><h1>สมัครค่าย</h1></button></Link>
+        <Link to="/detail">
+          <button type="button" class="btn btn-primary">
+            <h3>สมัครค่าย</h3>
+          </button>
+        </Link>
       </div>
+      <MDBContainer>
+          <a href="#!" className="fb-ic mr-3">
+            <MDBIcon fab icon="facebook-f" />
+          </a>
+          <a href="#!" className="tw-ic mr-3">
+            <MDBIcon fab icon="twitter" />
+          </a>
+        </MDBContainer>
       </>
     );
   }

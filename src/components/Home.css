@@ -1,11 +1,12 @@
 .Logo {
-    padding: 5%;
+    padding-top: 3%;
     height: auto;
-    width: 55%;
+    width: 45%;
     pointer-events: none;
 }
-
-
+.home{
+    height: 100%;
+}
 
 .btn {
     width: auto;

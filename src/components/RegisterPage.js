@@ -121,7 +121,8 @@ onRequest = () => {
       for (var key in this.state.errors) {
         text+=key+"\n";
       }
-      text+="\nสมัครไม่สำเร็จ"
+      text+="\nสมัครไม่สำเร็จ";
+      alert(text);
     }
   }
   
@@ -581,7 +582,7 @@ onRequest = () => {
         </div>
       </div>
       <Button variant="primary" onClick={this.handleSubmit.bind(this)}>
-        <h1>ส่งใบสมัคร</h1>
+        <h3>ส่งใบสมัคร</h3>
       </Button>
       </>
     );

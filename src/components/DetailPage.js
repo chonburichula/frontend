@@ -26,7 +26,7 @@ class Detail extends Component {
                     <p>-คำตอบอยู่บนพื้นฐานของความจริงความเป็นเหตุและผล</p>
                     <p>แล้วพบกันนะคะ :D</p>
                 </div>
-                <Link to="/register"><button type="button" class="btn btn-primary"><h1>ดำเนินการต่อ</h1></button></Link>
+                <Link to="/register"><button type="button" class="btn btn-primary"><h3>ดำเนินการต่อ</h3></button></Link>
             </div>
             </>
         );
