@@ -37,6 +37,7 @@ class Register extends Component {
     GradingAnswer1: null,
     GradingAnswer2: null,
     GradingAnswer3: null,
+    GradingAnswer4: null,
     Answer1: null,
     Answer2: null,
     Answer3: null,
@@ -88,6 +89,7 @@ onRequest = () => {
           GradingAnswer1: this.state.GradingAnswer1,
           GradingAnswer2: this.state.GradingAnswer2,
           GradingAnswer3: this.state.GradingAnswer3,
+          GradingAnswer4: this.state.GradingAnswer4,
           Answer1: this.state.Answer1,
           Answer2: this.state.Answer2,
           Answer3: this.state.Answer3,
@@ -99,8 +101,8 @@ onRequest = () => {
           Score: this.state.Score
         })
     };
-    // fetch('http://34.126.69.10:8080/register', requestOptions)
-    fetch('http://localhost:8080/register', requestOptions)
+    fetch('http://34.126.69.10:8080/register', requestOptions)
+    //fetch('http://localhost:8080/register', requestOptions)
     .then((response,data) => {
       console.log(response);
       if (response.ok) {
@@ -260,7 +262,12 @@ onRequest = () => {
       formIsValid = false;
       errors["คำถามข้อที่ึ 3"] = "";
     }
-    
+
+    //GradingAnswer4
+    if(this.state.GradingAnswer4=== null){
+      formIsValid = false;
+      errors["คำถามข้อที่ึ 4"] = "";
+    }
     // //Answer1
     // if(this.state.Answer1=== null){
     //   formIsValid = false;
@@ -353,7 +360,7 @@ onRequest = () => {
             </Form.Group>
             <br></br>
             <Form.Group controlId="formGroup">
-              <Form.Label ><h6>เลือกวันเดือนปีเกิด...</h6></Form.Label>
+              <Form.Label ><h6>เลือกวันเดือนปีเกิด...(หากเลือกไม่ได้ให้ใช้ Chrome หรือ Edge)</h6></Form.Label>
               <Form.Control type="date" name="dob" placeholder="Date of Birth" onChange={(e) => this.setState({ Birthdate: e.target.value })}/>
             </Form.Group>
             <br></br>
@@ -517,19 +524,24 @@ onRequest = () => {
           <hr class='Header'></hr>
           <Form>
           <br></br>
-            <h6>คำถามข้อที่ 1</h6>
+            <h6>คำถามข้อที่ 1 ถ้าฉันได้รับคัดเลือกให้เข้าร่วมค่ายนี้ แต่เพื่อนของฉันที่สมัครมาด้วยกันไม่ได้รับคัดเลือก ฉันจะ...(5 คะแนน)</h6>
             <div class="form-outline mb-4" id="formGroup">
               <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer1: e.target.value })}></textarea>
             </div>
             <br></br>
-            <h6>คำถามข้อที่ 2</h6>
+            <h6>คำถามข้อที่ 2 ฉันคิดว่าฉันควรได้รับคัดเลือกให้เข้าร่วมค่ายนี้ เพราะ...(5 คะแนน)</h6>
             <div class="form-outline mb-4" id="formGroup">
               <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer2: e.target.value })}></textarea>
             </div>
             <br></br>
-            <h6>คำถามข้อที่ 3</h6>
+            <h6>คำถามข้อที่ 3 สิ่งที่น้องตั้งใจมาตามหาในค่ายนี้คืออะไร และคิดว่าจะพบกับสิ่งนั้นหรือไม่(5 คะแนน)</h6>
             <div class="form-outline mb-4" id="formGroup">
               <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer3: e.target.value })}></textarea>
+            </div>
+            <br></br>
+            <h6>คำถามข้อที่ 4 หากน้องจะต้องจัดค่ายให้แก่พี่ ๆ จะจัดให้มีกิจกรรมอะไรบ้าง(5 คะแนน)</h6>
+            <div class="form-outline mb-4" id="formGroup">
+              <textarea class="form-control" id="formBig" rows="4" onChange={(e) => this.setState({ GradingAnswer4: e.target.value })}></textarea>
             </div>
             <br></br>
           </Form>

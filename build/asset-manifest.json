@@ -1,27 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.ecf935fa.chunk.css",
-    "main.js": "/static/js/main.1184866e.chunk.js",
-    "main.js.map": "/static/js/main.1184866e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.166c7cf5.js",
-    "runtime-main.js.map": "/static/js/runtime-main.166c7cf5.js.map",
+    "main.css": "/static/css/main.5b3a392e.chunk.css",
+    "main.js": "/static/js/main.06df1c71.chunk.js",
+    "main.js.map": "/static/js/main.06df1c71.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.89aee5bc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.89aee5bc.js.map",
     "static/css/2.b896213e.chunk.css": "/static/css/2.b896213e.chunk.css",
-    "static/js/2.9c0c0fb9.chunk.js": "/static/js/2.9c0c0fb9.chunk.js",
-    "static/js/2.9c0c0fb9.chunk.js.map": "/static/js/2.9c0c0fb9.chunk.js.map",
-    "static/js/3.77a2494b.chunk.js": "/static/js/3.77a2494b.chunk.js",
-    "static/js/3.77a2494b.chunk.js.map": "/static/js/3.77a2494b.chunk.js.map",
+    "static/js/2.7f550ce0.chunk.js": "/static/js/2.7f550ce0.chunk.js",
+    "static/js/2.7f550ce0.chunk.js.map": "/static/js/2.7f550ce0.chunk.js.map",
+    "static/js/3.1d21085b.chunk.js": "/static/js/3.1d21085b.chunk.js",
+    "static/js/3.1d21085b.chunk.js.map": "/static/js/3.1d21085b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.b896213e.chunk.css.map": "/static/css/2.b896213e.chunk.css.map",
-    "static/css/main.ecf935fa.chunk.css.map": "/static/css/main.ecf935fa.chunk.css.map",
-    "static/js/2.9c0c0fb9.chunk.js.LICENSE.txt": "/static/js/2.9c0c0fb9.chunk.js.LICENSE.txt",
+    "static/css/main.5b3a392e.chunk.css.map": "/static/css/main.5b3a392e.chunk.css.map",
+    "static/js/2.7f550ce0.chunk.js.LICENSE.txt": "/static/js/2.7f550ce0.chunk.js.LICENSE.txt",
     "static/media/mdb.css": "/static/media/arrow_right.0897f985.svg",
-    "static/media/logo.8c8fe91f.jpg": "/static/media/logo.8c8fe91f.jpg"
+    "static/media/logo.8c8fe91f.jpg": "/static/media/logo.8c8fe91f.jpg",
+    "static/media/index.css": "/static/media/opun-regular-webfont.b06f8012.woff2",
+    "static/media/thank.47549b79.png": "/static/media/thank.47549b79.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.166c7cf5.js",
+    "static/js/runtime-main.89aee5bc.js",
     "static/css/2.b896213e.chunk.css",
-    "static/js/2.9c0c0fb9.chunk.js",
-    "static/css/main.ecf935fa.chunk.css",
-    "static/js/main.1184866e.chunk.js"
+    "static/js/2.7f550ce0.chunk.js",
+    "static/css/main.5b3a392e.chunk.css",
+    "static/js/main.06df1c71.chunk.js"
   ]
 }

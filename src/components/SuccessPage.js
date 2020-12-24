@@ -9,9 +9,11 @@ class Success extends Component {
         <>
         <div className="SuccessInfo">
           <img className="Thank" src={thank} />
+          <br />
+          <br />
+          
+          <p>รอโหลดรูปแปปนึงน้าา...🕔</p>
           <Link to="/">
-          <br />
-          <br />
           <button type="button" class="btn btn-primary">
             <h3>กลับสู่หน้าหลัก</h3>
           </button>
