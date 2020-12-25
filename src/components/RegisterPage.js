@@ -554,7 +554,7 @@ onRequest = () => {
           <br></br>
           <h6>น้องรู้จักโครงการนี้ได้อย่างไร</h6>
           <Form.Group id="formGroup">
-            <Form.Control placeholder="..." onChange={(e) => this.setState({ Answer1: e.target.value })}/>
+            <Form.Control id="formGroup" placeholder="..." onChange={(e) => this.setState({ Answer1: e.target.value })}/>
           </Form.Group> 
           <br></br>
           <h6>น้องๆเคยเข้าร่วมโครงค่ายจุฬาฯ - ชลบุรีมาก่อนหรือไม่</h6>

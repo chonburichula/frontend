@@ -14,11 +14,13 @@ class Home extends Component {
         <header className="Home-header">
           <img className="Logo" src={logo} />
         </header>
+        <br></br>
         <Link to="/detail">
           <button type="button" class="btn btn-primary">
             <h3>สมัครค่าย</h3>
           </button>
         </Link>
+        <br></br>
       </div>
       <div class='Icons'>
         <div id="icon">
