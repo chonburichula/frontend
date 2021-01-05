@@ -11,7 +11,9 @@ class Home extends Component {
     return (
       <>
       <div class='Home'>
-        <header className="Home-header">
+        <br></br>
+        <h1>ปิดรับสมัครค่ายแล้วครับ</h1>
+        {/* <header className="Home-header">
           <img className="Logo" src={logo} />
         </header>
         <br></br>
@@ -30,7 +32,7 @@ class Home extends Component {
         <div id="icon">
           <SocialIcon url="https://www.instagram.com/chulachon.official/" />
           <span>  Instagram</span>
-        </div>
+        </div> */}
       </div>
       </>
     );
